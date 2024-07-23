@@ -15,13 +15,18 @@ const App = () => {
 
   useEffect(() => {
     window.handleDetectedDevice = (deviceAddress) => {
-      const newDevice = {
-        id: Math.random().toString(36).substr(2, 9),
-        address: deviceAddress,
-        x: Math.random() * 90 + '%',
-        y: Math.random() * 90 + '%'
-      };
-      setDetectedDevices(prevDevices => [...prevDevices, newDevice]);
+      setDetectedDevices((prevDevices) => {
+        if (prevDevices.find(device => device.address === deviceAddress)) {
+          return prevDevices; // 이미 감지된 기기
+        }
+        const newDevice = {
+          id: Math.random().toString(36).substr(2, 9),
+          address: deviceAddress,
+          x: Math.random() * 90 + '%',
+          y: Math.random() * 90 + '%'
+        };
+        return [...prevDevices, newDevice];
+      });
     };
   }, []);
 
