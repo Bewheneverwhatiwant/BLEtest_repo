@@ -28,6 +28,10 @@ const App = () => {
         return [...prevDevices, newDevice];
       });
     };
+
+    window.clearDetectedDevices = () => {
+      setDetectedDevices([]);
+    };
   }, []);
 
   return (
