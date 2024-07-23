@@ -17,7 +17,7 @@ const App = () => {
     window.handleDetectedDevice = (deviceAddress) => {
       setDetectedDevices((prevDevices) => {
         if (prevDevices.find(device => device.address === deviceAddress)) {
-          return prevDevices; // 이미 감지된 기기
+          return prevDevices;
         }
         const newDevice = {
           id: Math.random().toString(36).substr(2, 9),
